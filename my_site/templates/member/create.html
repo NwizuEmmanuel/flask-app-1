@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block title %}Create Class members{% endblock %}
+
+{% block body %}
+<h2>Create new members</h2>
+<form action="/create" method="post">
+    <input type="text" name="firstname" id="firstname_id" class="form-control w-25">
+    <input type="text" name="middlename" id="middlename_id" class="form-control w-25">
+    <input type="text" name="lastname" id="lastname_id" class="form-control w-25">
+    <input type="submit" value="submit">
+</form>
+{% endblock %}
