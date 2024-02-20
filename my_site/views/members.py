@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
-from ..models import ClassMembers
-from .. import db
+from my_site.models import ClassMembers
+from my_site.database import db
 
 members = Blueprint('members', __name__, template_folder="templates", static_folder="static")
 

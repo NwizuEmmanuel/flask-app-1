@@ -1,18 +1,16 @@
 from flask import Flask
-from .views import sample1, sample2
-from flask_debugtoolbar import DebugToolbarExtension
+from my_site.views import sample1, sample2, members, create_member
 from flask_sqlalchemy import SQLAlchemy
+from my_site.database import db
 
-app = Flask(__name__, instance_relative_config=True)
+def main_app():
+    app = Flask(__name__, instance_relative_config=True)
+    app.config.from_pyfile('config.py')
+    db.init_app(app)
 
-app.config.from_pyfile('config.py')
-db = SQLAlchemy()
-db.init_app(app)
-toolbar = DebugToolbarExtension(app)
-app.register_blueprint(sample1.sample1_bp)
-app.register_blueprint(sample2.sample2_bp)
+    app.register_blueprint(sample1.sample1_bp, url_prefix="/sample")
+    app.register_blueprint(sample2.sample2_bp, url_prefix="/sample")
+    app.register_blueprint(create_member.create_member_bp, url_prefix="/member")
+    app.register_blueprint(members.members, url_prefix="/member")
 
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-    app.run()
+    return app

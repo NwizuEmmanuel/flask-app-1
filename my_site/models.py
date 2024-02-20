@@ -1,4 +1,4 @@
-from my_site import db
+from my_site.database import db
 from sqlalchemy.orm import Mapped, mapped_column
 
 class ClassMembers(db.Model):

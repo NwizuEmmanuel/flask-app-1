@@ -2,5 +2,25 @@
 {% block title %}Class members{% endblock %}
 
 {% block body %}
-
+<h2 class="mt-3">Class members</h2>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">First</th>
+        <th scope="col">Middle</th>
+        <th scope="col">Last</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for item in class_members %}
+        <tr>
+            <th scope="row">{{item.id}}</th>
+            <td>{{item.firstname}}</td>
+            <td>{{item.middlename}}</td>
+            <td>{{item.lastname}}</td>
+          </tr>
+        {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}
